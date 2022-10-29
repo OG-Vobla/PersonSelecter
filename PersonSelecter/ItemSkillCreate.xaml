@@ -36,7 +36,7 @@
             <ColumnDefinition Width="390*"></ColumnDefinition>
             <ColumnDefinition Width="47*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="Buffs" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20"  MouseDoubleClick="Buff_MouseDoubleClick" Grid.ColumnSpan="3" Margin="0,10,40,205" Grid.RowSpan="2" >
+        <ListView x:Name="Buffs" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20"  MouseDoubleClick="Buff_MouseDoubleClick" Grid.ColumnSpan="3" Grid.RowSpan="2" HorizontalAlignment="Left" Width="390" Height="351" VerticalAlignment="Top" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn  x:Name="Buff_Name" Header="Buff_Name" DisplayMemberBinding="{Binding Name}"/>
@@ -44,7 +44,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView x:Name="ChoiceBuff" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20" Margin="47,0,0,205" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="5" MouseDoubleClick="ChoiceBuff_MouseDoubleClick" >
+        <ListView x:Name="ChoiceBuff" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="5" MouseDoubleClick="ChoiceBuff_MouseDoubleClick" Height="351" VerticalAlignment="Top" HorizontalAlignment="Right" Width="398" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn  x:Name="ChoiceBuff_Name" Header="ChoiceBuff_Name" DisplayMemberBinding="{Binding Name}"/>
@@ -59,7 +59,21 @@
         <Label Grid.Column="3" Content="Type(Если предмет)" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Comic Sans MS" FontSize="24" BorderBrush="{x:Null}" Height="46" Margin="33,253,0,0"/>
         <Button x:Name="BackBtn" Click="BackBtn_Click" Grid.Column="3" Grid.Row="2" Content="Создать Предмет" Style="{StaticResource ButtonUpDown}" Height="28" Width="178" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Margin="161,48,0,0" />
         <Button x:Name="FurtherBtn" Grid.Column="3" Grid.Row="2" Content="Создать Скилл" Style="{StaticResource ButtonUpDown}" Height="28" Width="134" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Click="FurtherBtn_Click" Margin="10,48,0,0" />
-        <Button x:Name="BackBtn1" Click="BackBtn1_Click" Grid.Column="5" Grid.Row="2" Content="Выйти" Style="{StaticResource ButtonUpDown}" Canvas.Top="503" Height="27" Width="85" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Canvas.Left="595" Margin="95,55,0,0"/>
+        <Button x:Name="BackBtn1" Click="BackBtn1_Click" Grid.Column="3" Grid.Row="2" Content="Выйти" Style="{StaticResource ButtonUpDown}" Canvas.Top="503" Height="27" Width="85" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Canvas.Left="595" Margin="361,48,0,0"/>
+        <ListView x:Name="Criteria" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20"  MouseDoubleClick="Criteria_MouseDoubleClick" Grid.ColumnSpan="3" Margin="0,0,0,18" Grid.RowSpan="3" Grid.Row="1" HorizontalAlignment="Left" Width="390" Height="351" VerticalAlignment="Bottom" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  x:Name="Criterion_Name" Header="Criterion_Name" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="ChoiceCriteria" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20" Margin="0,0,0,18" Grid.RowSpan="3" Grid.ColumnSpan="2" Grid.Column="5" MouseDoubleClick="ChoiceCriteria_MouseDoubleClick" Grid.Row="1" HorizontalAlignment="Right" Width="398" Height="351" VerticalAlignment="Bottom" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  x:Name="ChoiceCriterion_Name" Header="ChoiceCriterion_Name" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 

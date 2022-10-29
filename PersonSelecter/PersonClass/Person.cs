@@ -62,7 +62,6 @@ namespace PersonSelecter.PersonClass
                 {"Mp", 0},
                 {"Matt", 0}
             };
-
         }
 
         [BsonId]
@@ -290,8 +289,35 @@ namespace PersonSelecter.PersonClass
             info += ($"At - {at} \n HP - {hp} \n Pdet - {pdet} \n Matt - {matt} \n MP - {mp}");
             return info;
         }
-        public void WornItem(Item item)
+        public bool WornItem(Item item)
         {
+
+            foreach (var criterion in item.Criteria)
+            {
+                double character = 1.0;
+                switch (criterion.FeatureName)
+                {
+                    case "At":
+                        character = At;
+                        break;
+                    case "HP":
+                        character = HP;
+                        break;
+                    case "Pdet":
+                        character = Pdet;
+                        break;
+                    case "MP":
+                        character = MP;
+                        break;
+                    case "Matt":
+                        character = Matt;
+                        break;
+                }
+                if (character < criterion.Value)
+                {
+                    return false;
+                }
+            }
             switch (item.Type)
             {
                 case "Helmet":
@@ -304,7 +330,7 @@ namespace PersonSelecter.PersonClass
                     wornBreastplate = item;
                     break;
             }
-            foreach(var buff in item.Buffs)
+            foreach (var buff in item.Buffs)
             {
                 switch (buff.FeatureName)
                 {
@@ -325,6 +351,7 @@ namespace PersonSelecter.PersonClass
                         break;
                 }
             }
+            return true;
         }
         public void TakeOffItem(string Type)
         {

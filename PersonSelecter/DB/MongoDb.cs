@@ -21,10 +21,9 @@ namespace PersonSelecter.DB
         static IMongoCollection<Item> ItemCollection;
         static IMongoCollection<Skill> SkillCollection;
         static IMongoCollection<Buff> BuffCollection;
-
+        static IMongoCollection<Criterion> CriterionCollection;
         static MongoDb()
         {
-
             client = new MongoClient();
             PersonDatabase = client.GetDatabase("PersonDB");
             PersonCollection = PersonDatabase.GetCollection<Person>("Persons");
@@ -32,6 +31,7 @@ namespace PersonSelecter.DB
             ItemCollection = ItemDatabase.GetCollection<Item>("Items");
             SkillCollection = ItemDatabase.GetCollection<Skill>("Skills");
             BuffCollection = ItemDatabase.GetCollection<Buff>("Buffs");
+            CriterionCollection = ItemDatabase.GetCollection<Criterion>("Criteria");
         }
         public static void AddPersonToDB(Person newPerson)
         {
@@ -48,6 +48,15 @@ namespace PersonSelecter.DB
         public static void AddSkillToDB(Skill skill)
         {
             SkillCollection.InsertOne(skill);
+        }
+        public static void AddCriterionToDB(Criterion criterion)
+        {
+            CriterionCollection.InsertOne(criterion);
+        }
+        public static List<Criterion> FindAllCriteria()
+        {
+            return CriterionCollection.Find(x => true).ToList();
+
         }
         public static List<Person> FindAllPersons()
         {
@@ -68,6 +77,11 @@ namespace PersonSelecter.DB
             return SkillCollection.Find(x => true).ToList();
         }
 
+        public static Criterion FindCriterion(string name)
+        {
+            var one = CriterionCollection.Find(x => x.Name == name).FirstOrDefault();
+            return one;
+        }
         public static Person FindPerson(string name)
         {
             var one = PersonCollection.Find(x => x.Name == name).FirstOrDefault();

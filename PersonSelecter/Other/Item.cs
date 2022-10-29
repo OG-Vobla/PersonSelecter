@@ -10,10 +10,11 @@ namespace PersonSelecter.Other
 {
     public class Item
     {
-        public Item(string itemName, List<Buff> buffs, string type, string description)
+        public Item(string itemName, List<Buff> buffs, List<Criterion> criteria, string type, string description)
         {
             ItemName = itemName;
             Buffs = buffs;
+            Criteria = criteria;
             Type = type;
             Description = description;
         }
@@ -22,6 +23,7 @@ namespace PersonSelecter.Other
         ObjectId _id;
         public string Type { get; set; }    
         public List<Buff> Buffs { get; set; }
+        public List<Criterion> Criteria { get; set; }
         public string ItemName { get; set; }
         public string Description { get; set; }
         public string GetDescription()
@@ -31,7 +33,11 @@ namespace PersonSelecter.Other
             {
                 str += $"\t{i.FeatureName} + {i.Value}\n";
             }
-           
+            str += "Критерии:\n";
+            foreach (var i in Criteria)
+            {
+                str += $"\t{i.FeatureName} = {i.Value}\n";
+            }
             return str;
         }
     }

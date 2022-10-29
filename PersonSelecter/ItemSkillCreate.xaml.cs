@@ -30,6 +30,10 @@ namespace PersonSelecter
             {
                 Buffs.Items.Add(i);
             }
+            foreach (var i in MongoDb.FindAllCriteria())
+            {
+                Criteria.Items.Add(i);
+            }
         }
 
         private void FurtherBtn_Click(object sender, RoutedEventArgs e)
@@ -51,19 +55,25 @@ namespace PersonSelecter
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             List<Buff> buffs = new List<Buff>();
+            List<Criterion> criteria = new List<Criterion>();
             foreach (var i in ChoiceBuff.Items)
             {
                 buffs.Add(MongoDb.FindBuff(i.ToString()));
             }
+            foreach (var i in ChoiceCriteria.Items)
+            {
+                criteria.Add(MongoDb.FindCriterion(i.ToString()));
+            }
             if (MongoDb.FindItem(Name.Text) != null)
             {
                 Item item = MongoDb.FindItem(Name.Text);
-                item.Buffs = buffs;
+                //item.Buffs = buffs;
+                item.Criteria = criteria;
                 MongoDb.ReplaceItem(Name.Text, item);
             }
             else
             {
-                MongoDb.AddItemToDB(new Item(Name.Text, buffs, Type.Text, Description.Text));
+                MongoDb.AddItemToDB(new Item(Name.Text, buffs, criteria, Type.Text, Description.Text));
             }
             
         }
@@ -80,6 +90,15 @@ namespace PersonSelecter
         private void BackBtn1_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
+        }
+
+        private void Criteria_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ChoiceCriteria.Items.Add(((sender as ListView).SelectedItem as Criterion));
+        }
+        private void ChoiceCriteria_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ChoiceCriteria.Items.Remove(((sender as ListView).SelectedItem as Criterion));
         }
     }
 }
