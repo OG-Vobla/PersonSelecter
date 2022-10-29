@@ -1,0 +1,66 @@
+﻿<Page x:Class="PersonSelecter.ItemSkillCreate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PersonSelecter"
+      mc:Ignorable="d" 
+     d:DesignHeight="720" d:DesignWidth="1440"
+      Title="ItemSkillCreate">
+    <Page.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFCDD632"/>
+            <GradientStop Color="#FF26796F" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Background>
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="ButtonUpDown" >
+            <Setter Property="Width" Value="40"></Setter>
+            <Setter Property="Height" Value="20"></Setter>
+            <Setter Property="Opacity" Value="0.7"></Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="250*"></RowDefinition>
+            <RowDefinition Height="45*"></RowDefinition>
+            <RowDefinition Height="33*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*" ></ColumnDefinition>
+            <ColumnDefinition Width="283*"></ColumnDefinition>
+            <ColumnDefinition Width="99*"></ColumnDefinition>
+            <ColumnDefinition Width="510*"></ColumnDefinition>
+            <ColumnDefinition Width="45*"></ColumnDefinition>
+            <ColumnDefinition Width="390*"></ColumnDefinition>
+            <ColumnDefinition Width="47*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="Buffs" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20"  MouseDoubleClick="Buff_MouseDoubleClick" Grid.ColumnSpan="3" Margin="0,10,40,205" Grid.RowSpan="2" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  x:Name="Buff_Name" Header="Buff_Name" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView x:Name="ChoiceBuff" Foreground="White"  Background="{x:Null}" BorderBrush="White"  FontFamily="Comic Sans MS" FontSize="20" Margin="47,0,0,205" Grid.RowSpan="2" Grid.ColumnSpan="2" Grid.Column="5" MouseDoubleClick="ChoiceBuff_MouseDoubleClick" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  x:Name="ChoiceBuff_Name" Header="ChoiceBuff_Name" DisplayMemberBinding="{Binding Name}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="Name" Grid.Column="3" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="205,8,0,508" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="257" Height="40" Grid.RowSpan="2"/>
+        <Label Grid.Column="3" Content="Name" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Comic Sans MS" FontSize="24" BorderBrush="{x:Null}" Height="46" Margin="42,8,0,0"/>
+        <TextBox Height="140" x:Name="Description" Grid.Column="3" Grid.Row="1" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="205,45,0,339" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="270"/>
+        <Label Grid.Column="3" Content="Description" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Comic Sans MS" FontSize="24" BorderBrush="{x:Null}" Height="46" Margin="42,74,0,0"/>
+        <TextBox Height="40" x:Name="Type" Grid.Column="3" Grid.Row="1" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="284,205,0,279" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="155"/>
+        <Label Grid.Column="3" Content="Type(Если предмет)" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Comic Sans MS" FontSize="24" BorderBrush="{x:Null}" Height="46" Margin="33,253,0,0"/>
+        <Button x:Name="BackBtn" Click="BackBtn_Click" Grid.Column="3" Grid.Row="2" Content="Создать Предмет" Style="{StaticResource ButtonUpDown}" Height="28" Width="178" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Margin="161,48,0,0" />
+        <Button x:Name="FurtherBtn" Grid.Column="3" Grid.Row="2" Content="Создать Скилл" Style="{StaticResource ButtonUpDown}" Height="28" Width="134" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Click="FurtherBtn_Click" Margin="10,48,0,0" />
+        <Button x:Name="BackBtn1" Click="BackBtn1_Click" Grid.Column="5" Grid.Row="2" Content="Выйти" Style="{StaticResource ButtonUpDown}" Canvas.Top="503" Height="27" Width="85" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Canvas.Left="595" Margin="95,55,0,0"/>
+
+    </Grid>
+
+</Page>

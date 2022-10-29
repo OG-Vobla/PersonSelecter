@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BackgroundEditPersonPagePng.jpg" />
+    <None Remove="BackgroundPng.jpg" />
+    <None Remove="BackgroundPngMenu.jpg" />
+    <None Remove="BackgroundPngMount.jpg" />
+    <None Remove="BackgroundStatuePng.jpg" />
+    <None Remove="LavkaPng.jpg" />
+    <None Remove="RoguePng.jpg" />
+    <None Remove="WarriorPng.jpg" />
+    <None Remove="WizardPng.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.17.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.17.1" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.17.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="BackgroundEditPersonPagePng.jpg" />
+    <Resource Include="BackgroundPng.jpg" />
+    <Resource Include="BackgroundPngMenu.jpg" />
+    <Resource Include="BackgroundPngMount.jpg" />
+    <Resource Include="BackgroundStatuePng.jpg" />
+    <Resource Include="LavkaPng.jpg" />
+    <Resource Include="RoguePng.jpg" />
+    <Resource Include="WarriorPng.jpg" />
+    <Resource Include="WizardPng.png" />
+  </ItemGroup>
+
+</Project>

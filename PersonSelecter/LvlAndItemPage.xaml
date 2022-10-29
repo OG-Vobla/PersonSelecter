@@ -1,0 +1,76 @@
+﻿<Page x:Class="PersonSelecter.LvlAndItemPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PersonSelecter"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1440" OpacityMask="#FF1E1212"
+      Title="LvlAndItemPage">
+    <Page.Background>
+        <ImageBrush ImageSource="/LavkaPng.jpg" Opacity="0.4"/>
+    </Page.Background>
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="ButtonUpDown" >
+            <Setter Property="Width" Value="40"></Setter>
+            <Setter Property="Height" Value="20"></Setter>
+            <Setter Property="Opacity" Value="0.7"></Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TextInRectangle">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="400"></Setter>
+            <Setter Property="Margin" Value="10,0,10,0"></Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="121"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="99"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*" ></ColumnDefinition>
+            <ColumnDefinition Width="410"></ColumnDefinition>
+            <ColumnDefinition Width="43*"></ColumnDefinition>
+            <ColumnDefinition Width="389.628"></ColumnDefinition>
+            <ColumnDefinition Width="43*"></ColumnDefinition>
+            <ColumnDefinition Width="410"></ColumnDefinition>
+            <ColumnDefinition Width="45*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="White" Grid.Row="1" Grid.Column="1" Opacity="0.4" Margin="0,0,0,0" />
+        <ListView  Grid.Row="1" Grid.Column="1" Name="ItemStore" Foreground="Black"  Background="{x:Null}" BorderBrush="{x:Null}" MouseDown="ItemStore_MouseDown" FontFamily="Comic Sans MS" FontSize="20" MouseDoubleClick="ItemStore_MouseDoubleClick" SelectionChanged="ItemStore_SelectionChanged" Margin="0,0,0,0" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  x:Name="StoreItem_ItemName" Header="Name" DisplayMemberBinding="{Binding ItemName}"/>
+                    <GridViewColumn x:Name="StoreItem_Type" Header="Type" DisplayMemberBinding="{Binding Type}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Rectangle Fill="White" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="1" Opacity="0.4" Margin="0,0,0,119"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Style="{StaticResource TextInRectangle}" VerticalAlignment="Top" Background="White" Width="389" Padding="0"  Height="28" Margin="0,0,0,0"> 
+            Описание
+        </TextBlock>
+        <TextBlock x:Name="TextBlockDescription" Grid.Row="1" Grid.Column="3" Margin="0,30,0,0" Style="{StaticResource TextInRectangle}" VerticalAlignment="Top" Width="370" HorizontalAlignment="Center" />
+        <Rectangle Fill="White" Grid.Row="1" Grid.Column="5" Opacity="0.4" Margin="0,0,0,0" />
+        <ListView  Grid.Row="1" Grid.Column="5" x:Name="Inventory"   Background="{x:Null}" BorderBrush="{x:Null}" MouseDown="ItemStore_MouseDown" FontFamily="Comic Sans MS" FontSize="20" MouseDoubleClick="Inventory_MouseDoubleClick" SelectionChanged="Inventory_SelectionChanged"  Foreground="Black" Grid.ColumnSpan="1" Height="500" VerticalAlignment="Top" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  x:Name="Inventory_ItemName" Header="Name" DisplayMemberBinding="{Binding Item.ItemName}"/>
+                    <GridViewColumn x:Name="Inventory_Count" Header="Count" DisplayMemberBinding="{Binding Count}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource TextInRectangle}" VerticalAlignment="Top" Width="390" Height="28" Margin="146,60,0,0" Foreground="White" Grid.ColumnSpan="3"> 
+            Магазин
+        </TextBlock>
+        <TextBlock Grid.Column="5" Style="{StaticResource TextInRectangle}" Width="390" Foreground="White" Height="28" Margin="148,54,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"> 
+            Инвентарь
+        </TextBlock>
+        <Button x:Name="BackBtn" Click="BackBtn_Click" Grid.Column="5" Grid.Row="2" Content="Назад" Style="{StaticResource ButtonUpDown}" Canvas.Top="521" Height="27" Width="85" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Margin="10,28,0,0"/>
+        <Button x:Name="FurtherBtn" Grid.Column="5" Grid.Row="2" Content="Закончить" Style="{StaticResource ButtonUpDown}" Canvas.Top="521" Height="27" Width="113" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Canvas.Left="126" Click="FurtherBtn_Click" Margin="120,28,0,0"/>
+    </Grid>
+</Page>
