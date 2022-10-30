@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PersonSelecter.DB;
+using PersonSelecter.PersonClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,68 @@ namespace PersonSelecter
     /// </summary>
     public partial class SortedBuCommandsPage : Page
     {
+        private List<Person> FirstTeam;
+        private List<Person> SecondTeam;
+        private List<Person> Persons;
         public SortedBuCommandsPage()
         {
             InitializeComponent();
+
+            /*            foreach (var i in MongoDb.FindAllPersons())
+                        {
+                            PersonListFirstTeam.Items.Add(i);
+                        }*/
+        }
+
+        private void CreateCommands_Click(object sender, RoutedEventArgs e)
+        {
+            CreateTeams();
+            foreach (var i in FirstTeam)
+            {
+                PersonListFirstTeam.Items.Add(i);
+            }
+            foreach (var i in SecondTeam)
+            {
+                PersonListSecondTeam.Items.Add(i);
+            }
+        }
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+        private void CreateTeams()
+        {
+            PersonListFirstTeam.Items.Clear();
+            PersonListSecondTeam.Items.Clear();
+            FirstTeam = new List<Person>();
+            SecondTeam = new List<Person>();
+            Persons = new List<Person>();
+            Random random = new Random();
+            int LvlTeam = random.Next(1, 20);
+            foreach (var i in MongoDb.FindAllPersons())
+            {
+                if(i.LVL * 100 >= LvlTeam * 100 - 15*(LvlTeam) && i.LVL * 100 <= LvlTeam*100 + 15 * (LvlTeam) )
+                {
+                    Persons.Add(i);
+                }
+            }
+            if(Persons.Count <= 1)
+            {
+                CreateTeams();
+                return;
+            }
+            if(Persons.Count % 2 != 0)
+            {
+                Persons.Remove(Persons[Persons.Count-1]);
+            }
+            for(int i = 0; i < Persons.Count / 2; i++)
+            {
+                FirstTeam.Add(Persons[i]);
+            }
+            for (int i = Persons.Count / 2; i < Persons.Count; i++)
+            {
+                SecondTeam.Add(Persons[i]);
+            }
         }
     }
 }

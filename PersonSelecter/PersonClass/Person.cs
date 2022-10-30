@@ -113,7 +113,7 @@ namespace PersonSelecter.PersonClass
         public double At
         { get => at; set => at = value; }
 
-        public double HP
+        public double Hp
         { get => hp; set => hp = value; }
 
         public double Pdet
@@ -171,16 +171,16 @@ namespace PersonSelecter.PersonClass
         public int minIntelligence
         { get => MinIntelligence; set => MinIntelligence = value; }
         public int Expirience { get => expirience; set => expirience = value; }
-        [BsonIgnore]
+
         public Dictionary<string, double> StrenghtCalcValue
         { get => strenghtCalcValue; set => strenghtCalcValue = value; }
-        [BsonIgnore]
+
         public Dictionary<string, double> DexterityCalcValue
         { get => dexterityCalcValue; set => dexterityCalcValue = value; }
-        [BsonIgnore]
+
         public Dictionary<string, double> ConstitutionCalcValue
         { get => constitutionCalcValue; set => constitutionCalcValue = value; }
-        [BsonIgnore]
+ 
         public Dictionary<string, double> IntelligenceCalcValue
         { get => intelligenceCalcValue; set => intelligenceCalcValue = value; }
 
@@ -218,6 +218,17 @@ namespace PersonSelecter.PersonClass
                 matt = intelligenceCalcValue["Matt"] * intelligence;
             }
         }
+        public void FullCalc()
+        {
+            at = strenghtCalcValue["At"] * strenght;
+            hp = strenghtCalcValue["Hp"] * strenght;
+            pdet = dexterityCalcValue["Pdet"] * dexterity;
+            try { at += (dexterityCalcValue["At"] * dexterity); } catch { }
+            hp += constitutionCalcValue["Hp"] * constitution;
+            try { pdet += constitutionCalcValue["Pdet"] * constitution; } catch { }
+            mp = intelligenceCalcValue["Mp"] * intelligence;
+            matt = intelligenceCalcValue["Matt"] * intelligence;
+        }
         public void AddItem(Item newItem)
         {
             for (var i = 0; i < Inventory.Count; i++)
@@ -249,8 +260,8 @@ namespace PersonSelecter.PersonClass
                     case "At":
                         At += buff.Value;
                         break;
-                    case "HP":
-                        HP += buff.Value;
+                    case "Hp":
+                        Hp += buff.Value;
                         break;
                     case "Pdet":
                         Pdet += buff.Value;
@@ -284,9 +295,9 @@ namespace PersonSelecter.PersonClass
         public string PrintInfo()
         {
             
-            string info = (Name);
-            info += ($"\n Strenght - {Strenght} \n Dexterity - {Dexterity} \n Constitution - {Constitution} \n Intelligence - {Intelligence} \n");
-            info += ($"At - {at} \n HP - {hp} \n Pdet - {pdet} \n Matt - {matt} \n MP - {mp}");
+            string info = "Ваши характеристики: \n";
+            //info += ($"\n Strenght - {Strenght} \n Dexterity - {Dexterity} \n Constitution - {Constitution} \n Intelligence - {Intelligence} \n");
+            info += ($"\tAt - {at} \n \tHP - {hp} \n \tPdet - {pdet} \n \tMatt - {matt} \n \tMP - {mp}");
             return info;
         }
         public bool WornItem(Item item)
@@ -300,8 +311,8 @@ namespace PersonSelecter.PersonClass
                     case "At":
                         character = At;
                         break;
-                    case "HP":
-                        character = HP;
+                    case "Hp":
+                        character = Hp;
                         break;
                     case "Pdet":
                         character = Pdet;
@@ -337,8 +348,8 @@ namespace PersonSelecter.PersonClass
                     case "At":
                         At += buff.Value;
                         break;
-                    case "HP":
-                        HP += buff.Value;
+                    case "Hp":
+                        Hp += buff.Value;
                         break;
                     case "Pdet":
                         Pdet += buff.Value;
@@ -378,8 +389,8 @@ namespace PersonSelecter.PersonClass
                     case "At":
                         At -= buff.Value;
                         break;
-                    case "HP":
-                        HP -= buff.Value;
+                    case "Hp":
+                        Hp -= buff.Value;
                         break;
                     case "Pdet":
                         Pdet -= buff.Value;

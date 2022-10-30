@@ -6,9 +6,79 @@
       xmlns:local="clr-namespace:PersonSelecter"
       mc:Ignorable="d" 
        d:DesignHeight="720" d:DesignWidth="1440"
-      Title="SortedBuCommandsPage">
+      Title="SortedBuCommandsPage" OpacityMask="Black">
+    <Page.Resources>
+        <Style x:Key="TextBoxAllPoints" TargetType="TextBox">
+            <Setter Property="Background" Value="{x:Null}"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="Canvas.Left" Value="10"></Setter>
+            <Setter Property="Canvas.Top" Value="50"></Setter>
+            <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+            <Setter Property="IsEnabled" Value="False"></Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TextInRectangle">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="378"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Canvas.Left" Value="10"></Setter>
+            <Setter Property="Canvas.Top" Value="20"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonUpDown" >
+            <Setter Property="Width" Value="40"></Setter>
+            <Setter Property="Height" Value="20"></Setter>
+            <Setter Property="Opacity" Value="0.7"></Setter>
+        </Style>
+       
+    </Page.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/ComandsBattle.jpg" Opacity="0.4"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="110"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="410"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="410"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="410"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock  Grid.Row="0" Grid.Column="1" Style="{StaticResource TextInRectangle}">Первая команда</TextBlock>
+        <Button x:Name="BackBtn" Click="BackBtn_Click" Grid.Column="5" Grid.Row="2" Content="Выйти" Style="{StaticResource ButtonUpDown}" Canvas.Top="503" Height="26" Width="84" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Canvas.Left="595" Margin="62,0,0,0"/>
+        <Button x:Name="CreateCommands" Grid.Column="3" Grid.Row="2" Content="Сформировать команды" Style="{StaticResource ButtonUpDown}" Canvas.Top="503" Height="26" Width="228" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Canvas.Left="595" Click="CreateCommands_Click"/>
+        <TextBlock Grid.Column="5" Style="{StaticResource TextInRectangle}" Margin="236,0,0,0" Width="174" Grid.ColumnSpan="2">Вторая команда</TextBlock>
+        <Canvas Grid.Row="1" Grid.Column="1">
+            <Rectangle Fill="White" Width="283"  Height="500" Opacity="0.4" Margin="0,0,0,0" />
+            <ListView  Width="283"  Height="500" Grid.Row="1" Grid.Column="1" Name="PersonListFirstTeam" Foreground="Black"  Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Comic Sans MS" FontSize="20" Margin="0,0,0,0" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  x:Name="PersonNameFirstTeam" Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn  x:Name="PersonLvlFirstTeam" Header="Lvl" DisplayMemberBinding="{Binding LVL}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Canvas>
+        <Canvas Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right">
+            <Rectangle Fill="White" Width="283"  Height="500" Opacity="0.4" HorizontalAlignment="Left" Canvas.Left="110" VerticalAlignment="Center" />
+            <ListView  Width="282"  Height="500" Grid.Row="1" Grid.Column="1" Name="PersonListSecondTeam" Foreground="Black"  Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Comic Sans MS" FontSize="20" HorizontalAlignment="Left" Canvas.Left="109" VerticalAlignment="Center" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  x:Name="PersonNameSecondTeam" Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn  x:Name="PersonLvlSecondTeam" Header="Lvl" DisplayMemberBinding="{Binding LVL}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Canvas>
 
-    <Grid>      
-        
     </Grid>
 </Page>

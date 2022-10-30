@@ -44,6 +44,7 @@ namespace PersonSelecter
             }
             SetDefaultPoints();
             Points.Text = MaxPoints.ToString();
+            
         }
 
         public void ClickUp(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace PersonSelecter
                     {
                         StrenghtPoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
+                        //dataPerson.Strenght = a;
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
@@ -75,6 +77,7 @@ namespace PersonSelecter
                     {
                         IntelligencePoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
+                        //dataPerson.Intelligence = a;
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
@@ -84,6 +87,7 @@ namespace PersonSelecter
                     {
                         ConstitutionPoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
+                        //dataPerson.Constitution = a;
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
@@ -93,11 +97,16 @@ namespace PersonSelecter
                     {
                         DexterityPoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
+                        //dataPerson.Dexterity = a;
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
             }
-
+/*            dataPerson.CalculationDexterity();
+            dataPerson.CalculationIntelligence();
+            dataPerson.CalculationConstitution();
+            dataPerson.CalculationDexterity();*/
+            TextBlockPersonInfo.Text = dataPerson.PrintInfo();
         }
         public void SetDefaultPoints()
         {
@@ -112,7 +121,15 @@ namespace PersonSelecter
         }
         public void PointsChanged(object sender, EventArgs e)
         {
-
+            if (Points.Text != "0")
+            {
+                dataPerson.Strenght = int.Parse(StrenghtPoints.Text);
+                dataPerson.Dexterity = int.Parse(DexterityPoints.Text);
+                dataPerson.Constitution = int.Parse(ConstitutionPoints.Text);
+                dataPerson.Intelligence = int.Parse(IntelligencePoints.Text);
+                dataPerson.FullCalc();
+                TextBlockPersonInfo.Text = dataPerson.PrintInfo();
+            }
         }
 
         private void TextBlock_MouseEnter(object sender, MouseEventArgs e)

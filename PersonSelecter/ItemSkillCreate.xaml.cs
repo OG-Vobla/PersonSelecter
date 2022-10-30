@@ -67,8 +67,9 @@ namespace PersonSelecter
             if (MongoDb.FindItem(Name.Text) != null)
             {
                 Item item = MongoDb.FindItem(Name.Text);
-                //item.Buffs = buffs;
+                item.Buffs = buffs;
                 item.Criteria = criteria;
+                item.Description = Description.Text;
                 MongoDb.ReplaceItem(Name.Text, item);
             }
             else

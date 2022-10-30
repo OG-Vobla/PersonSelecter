@@ -77,8 +77,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*" ></ColumnDefinition>
                         <ColumnDefinition Width="283"></ColumnDefinition>
-                        <ColumnDefinition Width="99*"></ColumnDefinition>
-                        <ColumnDefinition Width="510"></ColumnDefinition>
+                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                        <ColumnDefinition Width="559"></ColumnDefinition>
                         <ColumnDefinition Width="45*"></ColumnDefinition>
                         <ColumnDefinition Width="390"></ColumnDefinition>
                         <ColumnDefinition Width="47*"></ColumnDefinition>
@@ -138,6 +138,10 @@
                     необходимую информацию о<LineBreak/>
                     характеристики наведитесь на неё.<LineBreak/>
                         </TextBlock>
+                    </Canvas>
+                    <Canvas Grid.Column="3" Grid.Row="1" x:Name="TextOfPersonInfo" Margin="270,0,3,0" >
+                        <Rectangle x:Name="RecText1" Fill="#FFF8F8F8" Opacity="0.3"  Stretch="Fill" Width="300" Height="467"></Rectangle>
+                        <TextBlock x:Name="TextBlockPersonInfo" Style="{StaticResource TextInRectangle}" Height="429" Width="290" Canvas.Left="10" Canvas.Top="20"  />
                     </Canvas>
                 </Grid>
             </TabItem>
@@ -236,7 +240,7 @@
                     Инвентарь
                     </TextBlock>
                     <TextBlock x:Name="WornHelmetTextBlock" Width="388" Style="{StaticResource TextInRectangle}" Grid.Row="1" Grid.Column="7" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave" Margin="0,303,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">Worn Helmet: <TextBox x:Name="WornHelmetName"  Style="{StaticResource TextBoxPoints}" Width="255"></TextBox></TextBlock>
-                    <TextBlock x:Name="WornBreastplateTextBlock" Width="358" Style="{StaticResource TextInRectangle}" Grid.Row="1" Grid.Column="7" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave" Margin="11,367,0,0" VerticalAlignment="Top">Worn Breastplate: <TextBox x:Name="WornBreastplateName"  Style="{StaticResource TextBoxPoints}" Width="257"></TextBox></TextBlock>
+                    <TextBlock x:Name="WornBreastplateTextBlock" Width="358" Style="{StaticResource TextInRectangle}" Grid.Row="1" Grid.Column="7" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave" Margin="11,367,0,0" VerticalAlignment="Top">Worn Breastplate: <TextBox x:Name="WornBreastplateName"  Style="{StaticResource TextBoxPoints}" Width="262"></TextBox></TextBlock>
                     <TextBlock x:Name="WornSwordTextBlock" Width="371" Style="{StaticResource TextInRectangle}" Grid.Row="1" Grid.Column="7" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave" Margin="10,425,0,0" VerticalAlignment="Top">Worn Sword: <TextBox x:Name="WornSwordName"  Style="{StaticResource TextBoxPoints}" Width="270"></TextBox></TextBlock>
 
                     <Button x:Name="WornItem" Grid.Column="7" Width="276" Height="30" Content="Надеть выбранный предмет" Style="{StaticResource ButtonUpDown}" HorizontalAlignment="Left" Margin="51,250,0,0" Grid.Row="1" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="#FF58D2B8" FontFamily="Comic Sans MS" FontSize="20" Click="WornItem_Click"/>

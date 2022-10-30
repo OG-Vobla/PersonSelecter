@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonSelecter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1440" OpacityMask="#FF1E1212" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="800" Width="1440" OpacityMask="#FF1E1212" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     
     <Grid>
         <Frame x:Name="MainFrame" Content="Frame" Background="Black"/>

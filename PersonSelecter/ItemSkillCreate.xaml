@@ -51,11 +51,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="Name" Grid.Column="3" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="205,8,0,508" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="257" Height="40" Grid.RowSpan="2"/>
+        <TextBox x:Name="Name" Grid.Column="3" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="212,13,0,471" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="257" Height="40" Grid.Row="1"/>
         <Label Grid.Column="3" Content="Name" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Comic Sans MS" FontSize="24" BorderBrush="{x:Null}" Height="46" Margin="42,8,0,0"/>
-        <TextBox Height="140" x:Name="Description" Grid.Column="3" Grid.Row="1" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="205,45,0,339" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="270"/>
+        <TextBox Height="140" x:Name="Description" Grid.Column="3" Grid.Row="1" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="212,82,0,302" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="270"/>
         <Label Grid.Column="3" Content="Description" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Comic Sans MS" FontSize="24" BorderBrush="{x:Null}" Height="46" Margin="42,74,0,0"/>
-        <TextBox Height="40" x:Name="Type" Grid.Column="3" Grid.Row="1" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="284,205,0,279" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="155"/>
+        <TextBox Height="40" x:Name="Type" Grid.Column="3" Grid.Row="1" Background="{x:Null}" FontFamily="Comic Sans MS" Margin="291,242,0,242" Text="" FontSize="24" BorderBrush="White" HorizontalAlignment="Left" Width="155"/>
         <Label Grid.Column="3" Content="Type(Если предмет)" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" FontFamily="Comic Sans MS" FontSize="24" BorderBrush="{x:Null}" Height="46" Margin="33,253,0,0"/>
         <Button x:Name="BackBtn" Click="BackBtn_Click" Grid.Column="3" Grid.Row="2" Content="Создать Предмет" Style="{StaticResource ButtonUpDown}" Height="28" Width="178" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Margin="161,48,0,0" />
         <Button x:Name="FurtherBtn" Grid.Column="3" Grid.Row="2" Content="Создать Скилл" Style="{StaticResource ButtonUpDown}" Height="28" Width="134" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="18" Opacity="1" Background="#FFAAC52B" Click="FurtherBtn_Click" Margin="10,48,0,0" />

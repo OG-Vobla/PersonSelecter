@@ -90,7 +90,7 @@ namespace PersonSelecter
             {
                 Skills.Items.Add(skill);
             }
-            Points.Text = person.CharPoints.ToString();
+            
             personName.Text = person.Name;
             TextBoxExp.Text = person.Expirience.ToString();
             TextBoxLvl.Text = person.LVL.ToString();
@@ -101,6 +101,8 @@ namespace PersonSelecter
             WornBreastplateName.Text = person.WornBreastplate?.ItemName;
             SetDefaultPoints();
             InventoryUpdate();
+            TextBlockPersonInfo.Text = person.PrintInfo();
+            Points.Text = person.CharPoints.ToString();
         }
         public void ClickUp(object sender, EventArgs e)
         {
@@ -122,7 +124,7 @@ namespace PersonSelecter
                     {
                         StrenghtPoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
-                        person.Strenght = a;
+                        //person.Strenght = a;
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
@@ -132,7 +134,7 @@ namespace PersonSelecter
                     {
                         IntelligencePoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
-                        person.Intelligence = a;
+                       // person.Intelligence = a;
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
@@ -142,7 +144,7 @@ namespace PersonSelecter
                     {
                         ConstitutionPoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
-                        person.Constitution = a;
+                        //person.Constitution = a;
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
@@ -152,7 +154,8 @@ namespace PersonSelecter
                     {
                         DexterityPoints.Text = $"{a}";
                         Points.Text = (int.Parse(Points.Text) - e).ToString();
-                        person.Dexterity = a;
+                        //person.Dexterity = a;
+                        
                     }
                     else { MessageBox.Show("Вы перешли черту. Вы дорого заплатите за это...."); }
                     break;
@@ -163,7 +166,12 @@ namespace PersonSelecter
         {
             if(Points.Text != "0")
             {
-                
+                person.Strenght = int.Parse(StrenghtPoints.Text);
+                person.Dexterity = int.Parse(DexterityPoints.Text);
+                person.Constitution = int.Parse(ConstitutionPoints.Text);
+                person.Intelligence = int.Parse(IntelligencePoints.Text);
+                person.FullCalc();
+                TextBlockPersonInfo.Text = person.PrintInfo();
             }
             
         }
@@ -326,6 +334,10 @@ namespace PersonSelecter
             if (item == null)
             {
                 MessageBox.Show("Чтобы надеть предмет необходимо сначала выбрать этот предмет в инвентарею");
+            }
+            else if(!person.WornItem(item))
+            {
+                MessageBox.Show("Вы не можете надеть этот предмет из-за нехватки характеристик");
             }
             else
             {
