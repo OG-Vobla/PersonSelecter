@@ -62,7 +62,7 @@ namespace PersonSelecter
             int LvlTeam = random.Next(1, 20);
             foreach (var i in MongoDb.FindAllPersons())
             {
-                if(i.LVL * 100 >= LvlTeam * 100 - 15*(LvlTeam) && i.LVL * 100 <= LvlTeam*100 + 15 * (LvlTeam) )
+                if(i.LVL * 100 >= LvlTeam * 100 - 10*(LvlTeam) && i.LVL * 100 <= LvlTeam*100 + 10 * (LvlTeam) )
                 {
                     Persons.Add(i);
                 }
@@ -76,13 +76,18 @@ namespace PersonSelecter
             {
                 Persons.Remove(Persons[Persons.Count-1]);
             }
-            for(int i = 0; i < Persons.Count / 2; i++)
+            int a = Persons.Count / 2;
+            for (int i = 0; i < a; i++)
             {
-                FirstTeam.Add(Persons[i]);
+                int index = random.Next(0, Persons.Count - 1);
+                FirstTeam.Add(Persons[index]);
+                Persons.Remove(Persons[index]);
             }
-            for (int i = Persons.Count / 2; i < Persons.Count; i++)
+            for (int i = 0; i < a; i++)
             {
-                SecondTeam.Add(Persons[i]);
+                int index = random.Next(0, Persons.Count - 1);
+                SecondTeam.Add(Persons[index]);
+                Persons.Remove(Persons[index]);
             }
         }
     }
